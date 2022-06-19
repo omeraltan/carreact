@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useRef} from 'react';
+
 
 function App() {
+  const [user, setUser] = useState();
+  let userName = useRef();
+
+  const showUserName = () => {
+    if (userName != null && userName !== "") {
+      setUser(userName.current.value);
+    } else {
+      setUser(userName.current.value);
+    }
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello React
-        </a>
-      </header>
+    <div>
+      <p>User Name: {user}</p>
+      <input type="text" ref={userName}></input>
+      <button onClick={showUserName}> Show User Name</button>
     </div>
   );
 }
